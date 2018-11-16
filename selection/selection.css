@@ -1,0 +1,63 @@
+.parent {
+  background-color: red;
+  position: absolute;
+  top: 20px;
+  bottom: 200px;
+  left: 20px;
+  right: 150px;
+}
+
+span {
+  position: absolute;
+  background-color: yellow;
+  /*background-color: yellow;*/
+}
+
+.north-west, .north-east, .south-east, .south-west {
+  height: 10px;
+  width: 10px;
+  background-color: green;
+}
+
+.north-west, .south-east {
+  cursor: nwse-resize;
+}
+
+.north-east, .south-west {
+  cursor: nesw-resize;
+}
+
+.north-east {
+  right: 0px;
+}
+
+.south-east {
+  right: 0px;
+  bottom: 0px;
+}
+
+.south-west {
+  bottom: 0px;
+}
+
+.north, .south {
+  height: 10px;
+  left: 10px;
+  right: 10px;
+  cursor: ns-resize;
+}
+
+.south {
+  bottom: 0px;
+}
+
+.west, .east {
+  width: 10px;
+  top: 10px;
+  bottom: 10px;
+  cursor: ew-resize;
+}
+
+.east {
+  right: 0px;
+}
