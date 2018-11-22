@@ -434,8 +434,15 @@ span {
 }
 
 .annotation-marking-box.visible,
-#annotation-marking-area.visible {
+#annotation-marking-area.visible,
+#creation.visible {
 	visibility: visible;
+}
+
+.annotation-marking-box.visible.crosshair-cursor,
+#annotation-marking-area.visible.crosshair-cursor,
+#creation.visible.crosshair-cursor {
+	cursor: crosshair;
 }
 
 .annotation-box {
