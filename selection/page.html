@@ -6,7 +6,6 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<link rel="stylesheet" href="selection.css">
 		<script src="./javascript/require.js"></script>
-		<!--<script src="./javascript/interact.min.js"></script>-->
 		
 		<style >
 			.resize-drag {
@@ -48,10 +47,16 @@
 		</style>
 	</head>
 	<body>
-		<div class="resize-container">
+		<!--<div class="resize-container">
 			<div class="resize-drag">
 				Resize from any edge or corner
 			</div>
+		</div>-->
+		
+		<div id="creation" style="height: 100%">
+			<div id="document-inner-container"></div>
+			<div id="annotation-marking-box" class="annotation-marking-box"></div>
+			<div id="annotation-marking-area"></div>
 		</div>
 		
 		<!--<div id="drag-1" class="draggable">
@@ -66,11 +71,9 @@
 				baseUrl: './javascript'
 			});
 			document.addEventListener('DOMContentLoaded', function () {
-				require(['interact'], function(interact) {
+				require(['interact', 'linter'], function(interact, linter) {
 					interact('.resize-drag')
 						.draggable({
-							// enable inertial throwing
-							inertia: true,
 							// keep the element within the area of it's parent
 							restrict: {
 								restriction: "parent",
@@ -124,30 +127,6 @@
 							target.setAttribute('data-y', y);
 							target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
 						});
-					  
-					 
-					/*interact('.draggable')
-						.draggable({
-							// enable inertial throwing
-							inertia: true,
-							// keep the element within the area of it's parent
-							restrict: {
-								restriction: "parent",
-								endOnly: true,
-								elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-							},
-							// enable autoScroll
-							autoScroll: true,
-
-							// call this function on every dragmove event
-							onmove: dragMoveListener,
-							// call this function on every dragend event
-							onend: function (event) {
-								var textEl = event.target.querySelector('p');
-
-								textEl && (textEl.textContent = 'moved a distance of ' + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) + Math.pow(event.pageY - event.y0, 2) | 0)).toFixed(2) + 'px');
-							}
-						});*/
 
 						function dragMoveListener (event) {
 							var target = event.target,
@@ -167,6 +146,9 @@
 
 						// this is used later in the resizing and gesture demos
 						window.dragMoveListener = dragMoveListener;
+						
+						
+						linter.init();
 				});
 			});
 		</script>

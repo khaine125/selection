@@ -61,3 +61,555 @@ span {
 .east {
   right: 0px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+**
+** myProcess, proprietary property of AMPLEXOR
+** (c) Copyright, AMPLEXOR Adriatic d.o.o. 2002-2016
+** All rights reserved.
+**
+** May be used only in accordance with the terms and conditions of the
+** license agreement governing use of AMPLEXOR software
+** between you and AMPLEXOR or AMPLEXOR's authorized reseller.
+** Not to be changed without prior written permission of AMPLEXOR.
+** Any other use is strictly prohibited.
+**
+** $Revision: 1.11 $
+** $Date: 2017/01/18 16:20:37 $
+** $Author: euroscript\masag $
+**
+*/
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+.transition {
+	-webkit-transition: all 600ms; 
+	-moz-transition: all 600ms; 
+	-o-transition: all 600ms;
+	transition: all 600ms;
+	-webkit-transition-timing-function: cubic-bezier(0.040, 0.820, 0.250, 0.945); 
+	-moz-transition-timing-function: cubic-bezier(0.040, 0.820, 0.250, 0.945); 
+	-o-transition-timing-function: cubic-bezier(0.040, 0.820, 0.250, 0.945); 
+	transition-timing-function: cubic-bezier(0.040, 0.820, 0.250, 0.945);
+}
+
+.dialogContent {
+	position: absolute;
+	top: 30px;
+	bottom: 0px;
+}
+
+.dialogContent.withoutTitleBar {
+	top: 0px;
+}
+
+.document-header {
+	width: 100%;
+	position: relative;
+	padding: 4px;
+}
+
+#document-title {
+	text-align: left;
+	display: inline-block;
+	float: left;
+	padding: 2px;
+}
+
+#resize-button {
+	display: inline-block;
+	float: right;
+	padding: 2px;
+	border-radius: 2px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#resize-button:hover {
+	color: #50276e;	
+}
+
+#resize-button > span {
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: underline;
+}
+
+.main-container {
+	position: absolute;
+	top: 33px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	padding: 4px;
+}
+
+.main-container-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+#document-container {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 70%;
+	overflow: hidden;
+	z-index: 10;
+}
+
+#document-container.maximized {
+	width: 100%;
+	padding-right: 0px;
+}
+
+#annotations-container {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	overflow: hidden;
+	height: 100%;
+	width: 30%;
+}
+
+#document-actions {
+	margin-bottom: 4px;
+	height: 30px;
+	background: #f7f7f7;
+	border: 2px solid #f7f7f7;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#annotation-tools {
+	margin-bottom: 4px;
+	height: 30px;
+	background: #f7f7f7;
+	border: 2px solid #f7f7f7;
+	border-left: 2px solid #fff;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#annotation-tools .dropdown-menu {
+	background: transparent;
+}
+
+.dropdown-menu-scroll-x {
+	overflow: hidden;
+}
+
+.page-controls-container {
+	display: table;
+	height: 100%;
+	border-collapse: separate;
+    border-spacing: 2px 0px;
+}
+
+.page-tools-container {
+	display: table;
+	height: 100%;
+	border-collapse: separate;
+	border-spacing: 2px 0px;
+}
+
+.page-controls-container.left,
+.page-tools-container.left {
+	float: left;
+}
+
+.page-controls-container.right,
+.page-tools-container.right {
+	float: right;
+}
+
+.page-control,
+.page-tool {
+	display: table-cell;
+	cursor: pointer;
+	vertical-align: middle;
+	padding: 0px 4px;
+	border-radius: 2px;
+	white-space: nowrap;
+}
+
+.page-control.disabled {
+	opacity: 0.2;
+}
+
+.page-control:hover,
+.page-tool:hover,
+.page-control.selected,
+.page-tool.selected {
+	background: #c9c9c9;
+	-webkit-transition: 300ms;
+	-moz-transition: 300ms;
+	-o-transition: 300ms;
+	transition: 300ms;
+}
+
+.page-control > img,
+.page-tool > img {
+	display: block;
+}
+
+#refresh-annotations-button > img {
+	margin-top: 1px;
+}
+
+#filter-annotations-button > img,
+#new-annotation-button > img,
+#strikethrough-annotation-button > img,
+#filter-annotations-button > span,
+#new-annotation-button > span,
+#strikethrough-annotation-button > span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.page-control .rotate {
+	-webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+#page-indicator,
+#zoom-indicator {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0px 4px;
+	white-space: nowrap;
+}
+
+#page-indicator {
+	background: #fff;
+	border: 1px solid #999;
+}
+
+#page-index,
+#page-count {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+#page-index {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	outline: none;
+	font: 12px "Calibri";
+	width: 0px;
+}
+
+.mac #page-index {
+	font: 10px "Lucida Grande"
+}
+
+#document-inner-container,
+#annotations-inner-container {
+	width: 100%;
+	height: calc(100% - 34px);
+	background: #999;
+	overflow: auto;
+	border: 1px solid #999;
+}
+
+#document-inner-container {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#annotations-inner-container {
+	overflow-x: hidden;
+	border-left: 2px solid #fff;
+}
+
+#document-inner-container.crosshair-cursor,
+#annotation-marking-area.crosshair-cursor {
+	cursor: crosshair;
+}
+
+#annotations-inner-container ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+#annotations-inner-container > ul > li > ul {
+	margin-left: 16px;
+}
+
+.page-container {
+	border: 4px solid #999;
+	border-bottom: 0px;
+	margin: 0 auto;
+	background: #FFF;
+	position: relative;
+}
+
+.page-loading-indicator {
+	display: inline-block;
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.page-container:last-child {
+	border-bottom: 4px solid #999;
+}
+
+.page-container > img {
+	width: 100%;
+	height: 100%;
+}
+
+.annotation-marking-box {
+	position: absolute;
+	background: rgba(80, 39, 110, 0.2);
+	border: 1px solid #50276e;
+	visibility: hidden;
+	z-index: 10;
+}
+
+#annotation-marking-area {
+	background: rgba(0, 0, 0, 0);
+	position: absolute;
+	visibility: hidden;
+	z-index: 100;
+}
+
+.annotation-marking-box.visible,
+#annotation-marking-area.visible {
+	visibility: visible;
+}
+
+.annotation-box {
+	position: absolute;
+	background: rgba(80, 39, 110, 0.2);
+}
+
+.annotation-box.selected {
+	background: rgba(0, 163, 208, 0.2);
+	border: 1px solid #00a3d0;
+	z-index: 1000;
+}
+
+.annotation-box.hidden {
+	display: none;
+}
+
+.strikethrough {
+	background: none;
+}
+
+.strikethrough:after {
+	position: absolute;
+	left: 2px;
+	right: 2px;
+	top: 50%;
+	height: 2px;
+	background: #000;
+	content: "";
+	display: block;
+}
+
+.annotation-container {
+	background: #FFF;
+	padding: 4px;
+	border-left: 8px solid #50276e;
+	position: relative;
+	margin: 2px 1px;
+	background: #f7f7f7;
+}
+
+.annotation-container.selected {
+	background: #fff;
+	border-left-color: #00a3d0;
+}
+
+.annotation-header {
+	padding-bottom: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.annotation-button-edit {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.annotation-body {
+	padding-top: 4px;
+	border-top: 1px solid #CCC;
+}
+
+.annotation-author,
+.annotation-creation-date {
+	display: inline-block;
+	width: 100%;
+	text-align: left;
+	padding-left: 5px;
+}
+
+.annotation-author {
+	padding-right: 16px;
+}
+
+.annotation-creation-date {
+	font-size: 12px;
+	color: #555;
+}
+
+.mac .annotation-creation-date {
+	font-size: 10px;
+}
+
+.annotation-display {
+	font: 12px "Calibri";
+	width: 100%;
+	padding: 4px;
+	text-align: left;
+	white-space: pre-wrap;
+}
+
+.annotation-display.hidden {
+	display: none;
+}
+
+.annotation-edit {
+	font: 12px "Calibri";
+	width: 100%;
+	outline: 0;
+	padding: 4px;
+	text-align: left;
+	resize: vertical;
+	border: 1px solid #999;
+}
+
+.mac .annotation-display,
+.mac .annotation-edit {
+	font: 10px "Lucida Grande";
+}
+
+.annotation-actions {
+	margin-top: 4px;
+	border-top: 1px solid #CCC;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.annotation-button-save,
+.annotation-button-cancel,
+.annotation-button-reply,
+.annotation-button-delete {
+	display: inline-block;
+	padding: 2px 4px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.annotation-button-save:hover,
+.annotation-button-cancel:hover,
+.annotation-button-reply:hover,
+.annotation-button-delete:hover {
+	color: #50276e;
+	-webkit-transition: 300ms;
+	-moz-transition: 300ms;
+	-o-transition: 300ms;
+	transition: 300ms;
+}
+
+.annotation-button-delete {
+	float: left;
+}
+
+.annotation-button-save,
+.annotation-button-cancel,
+.annotation-button-reply {
+	float: right;
+}
+
+.hidden {
+	display: none;
+}
+
+#warning-msg {
+	height: 100%;
+	position: relative;
+}
+
+#warning-msg span {
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+}
