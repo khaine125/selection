@@ -16,16 +16,15 @@ define(['helpers'], function(helpers) {
 		documentInnerContainer = document.getElementById('creation'),
 		annotationMarkingArea = document.getElementById('annotation-marking-area'),
 		zoomLevelIndex = 2,
-		isSelectingStarted;
+		isSelectingStarted, eventResult;
 		
 	function annotationSelectStart(event) {
 		var selectionAreaStyle = annotationMarkingArea.style, 
 			targetOffsetLeft, targetOffsetTop, targetParentStyle;
 		
 		event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-		console.log(event.target.tagName);
-		
-		if (event.target.tagName === 'DIV') {
+		//debugger;
+		if (event.target.tagName === 'DIV' && event.target.className.trim() !== 'annotation-box') {
 			annotationMarkingBox.target = event.target;
 			
 			targetParentStyle = getComputedStyle(event.target.parentElement);
@@ -46,7 +45,7 @@ define(['helpers'], function(helpers) {
 			addClass(annotationMarkingArea, 'visible');
 			
 			this.isSelectingStarted = true;
-			addEvent(annotationMarkingArea, 'mousemove', annotationSelect.bind(this));
+			this.eventResult = addEvent(annotationMarkingArea, 'mousemove', annotationSelect.bind(this));
 		}
 	}
 	
@@ -83,12 +82,11 @@ define(['helpers'], function(helpers) {
 	private Selection target;
 	*/
 	
-	function annotationSelectEnd() {
-		var annotation,
-			createAnnotationButton = document.getElementById('new-annotation-button');
+	function annotationSelectEnd(event) {
+		var annotation;
 		
-		if (this.isSelectingStarted) {
-			//annotationMarkingArea.remove();
+		if (this.isSelectingStarted && event.target.className.trim() !== 'annotation-box') {
+			this.eventResult.remove();
 			
 			removeClass(annotationMarkingArea, 'visible');
 			
@@ -107,10 +105,6 @@ define(['helpers'], function(helpers) {
 			removeClass(annotationMarkingBox.element, 'visible');
 			
 			createAnnotation(annotation);
-			
-			if (createAnnotationButton && hasClass(createAnnotationButton, 'selected')) {
-				removeClass(createAnnotationButton, 'selected');
-			}
 		}
 	}
 	
@@ -118,7 +112,6 @@ define(['helpers'], function(helpers) {
 		var posX, posY;
 		
 		event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-		
 		if (this.isSelectingStarted) {
 			posX = event.offsetX + annotationMarkingBox.targetOffsetLeft - documentInnerContainer.scrollLeft;
 			posY = event.offsetY + annotationMarkingBox.targetOffsetTop - documentInnerContainer.scrollTop;
